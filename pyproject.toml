@@ -1,3 +1,49 @@
+[project]
+name = "kapowarr"
+version = "1.0.0"
+description = "Kapowarr is a software to build and manage a comic book library, fitting in the *arr suite of software."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+dependencies = [
+    "requests ~= 2.31",
+    "bs4 ~= 0.0.2",
+    "flask ~= 3.0",
+    "waitress ~= 3.0",
+    "pycryptodome ~= 3.20",
+    "tenacity ~= 8.2",
+    "bencoding ~= 0.2",
+    "simplejson ~= 3.19",
+    "aiohttp ~= 3.9",
+    "flask-socketio ~= 5.3",
+]
+
+[project.optional-dependencies]
+docs = [
+    "wheel>=0.38.4",
+    "mkdocs-material>=8.5.11",
+    "mkdocs-redirects>=1.2.0",
+    "mkdocs-git-revision-date-localized-plugin>=1.1.0",
+    "Pygments>=2.13.0",
+    "pymdown-extensions>=9.9",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "autopep8 ~= 2.2",
+    "isort ~= 5.13",
+    "mypy ~= 1.10",
+    "pre-commit ~= 3.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["Kapowarr.py", "frontend", "backend"]
+
+
 [tool.mypy]
 warn_unused_configs = true
 sqlite_cache = true
@@ -19,4 +65,3 @@ aggressive = 3
 experimental = true
 max_line_length = 80
 ignore = ["E124", "E125", "E126", "E128", "E261"]
-
